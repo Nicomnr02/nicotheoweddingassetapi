@@ -1,4 +1,4 @@
-package main
+package handler
 
 import (
 	"fmt"
@@ -11,21 +11,9 @@ import (
 	"github.com/aws/aws-sdk-go/aws/credentials"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/s3"
-	"github.com/joho/godotenv"
 )
 
-func main() {
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatal("No .env file found (falling back to system env vars)")
-	}
-
-	http.HandleFunc("/preview", serveSignedURL)
-	fmt.Println("Server started at :2300")
-	log.Fatal(http.ListenAndServe(":2300", nil))
-}
-
-func serveSignedURL(w http.ResponseWriter, r *http.Request) {
+func Handler(w http.ResponseWriter, r *http.Request) {
 
 	accessKey := os.Getenv("ACCESS_KEY")
 	secretKey := os.Getenv("SECRET_KEY")
