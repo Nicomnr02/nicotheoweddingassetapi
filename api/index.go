@@ -83,6 +83,8 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		"invitation-asset/14. Thanking Photo/1.jpeg",
 	}
 
+	bgMusic := "invitation-asset/bg_music/household_of_faith.m4a"
+
 	accessKey := os.Getenv("ACCESS_KEY")
 	secretKey := os.Getenv("SECRET_KEY")
 	bucket := "nico-wedding"
@@ -125,6 +127,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		BGImagePage11      []string `json:"bg_image_page_11"`
 		BGImagePage12      []string `json:"bg_image_page_12"` //prewed collection
 		BGImagePage14      []string `json:"bg_image_page_14"`
+		BGMusic            string   `json:"bg_music"`
 	}{}
 
 	for _, obj := range carouselImagePage0 {
@@ -167,6 +170,8 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	for _, obj := range bgImagePage14 {
 		response.BGImagePage14 = append(response.BGImagePage14, sign(obj))
 	}
+
+	response.BGMusic = sign(bgMusic)
 
 	w.Header().Set("Content-Type", "application/json")
 	if err := json.NewEncoder(w).Encode(response); err != nil {
