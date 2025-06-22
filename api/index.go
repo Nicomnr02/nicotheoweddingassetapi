@@ -14,6 +14,8 @@ import (
 
 func Handler(w http.ResponseWriter, r *http.Request) {
 
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+
 	carouselImagePage0 := []string{
 		"invitation-asset/1. Loading Spinner Photos/1.webp",
 		"invitation-asset/1. Loading Spinner Photos/2.webp",
