@@ -6,6 +6,11 @@ import (
 	"strings"
 )
 
+const (
+	NomerMami   = "6285261919124"
+	NomerSayang = "6281370905656"
+)
+
 func main() {
 
 	wa := whatsapp.NewWhatsappClient()
@@ -37,6 +42,11 @@ func main() {
 		// "Ibu B. Hasibuan",
 		// "H.Marbun",
 		// "I.Simanjuntak",
+
+		// "Daniel Capah",
+
+		// "Kel bpk L Silalahi/br Sihotang",
+		// "Kel Sitinjak/br silalahi",
 	}
 
 	for _, item := range list {
@@ -50,7 +60,7 @@ func main() {
 		// Step 3: Ganti semua spasi menjadi %20
 		item = strings.ReplaceAll(item, " ", "%20")
 
-		err := wa.SendPersonalMessage("6285261919124", fmt.Sprintf(
+		err := wa.SendPersonalMessage(NomerMami, fmt.Sprintf(
 			`
 	Shalom dan salam hangat,
 	
