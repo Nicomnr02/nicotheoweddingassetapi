@@ -5,6 +5,7 @@ go 1.24.3
 require (
 	github.com/aws/aws-sdk-go v1.55.7
 	github.com/joho/godotenv v1.5.1
+	golang.org/x/time v0.12.0
 )
 
 require (
